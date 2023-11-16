@@ -11,7 +11,15 @@ class Entidad{
     constructor(){
         this.notas = ['C','E','G']
         this.notas = ['C','D','E','F','G','A','B']
-        this.colores = ['red','grey','yellow','orange','brown','blue','green']
+        this.colores = [
+            [255,0,0],
+            [130,130,130],
+            [255,255,0],
+            [255,127,0],
+            [132,61,35],
+            [0,0,255],
+            [0,255,0]
+        ]
         this.aleatorio = Math.floor(Math.random()*this.notas.length)
         this.nota = this.notas[this.aleatorio]
         this.x;
@@ -21,6 +29,7 @@ class Entidad{
         this.velocidad = 5;
         this.octava = Math.round(Math.random()*2)+3
         this.sonido = new Audio("../piano/"+this.nota+""+this.octava+".mp3")
+        this.opacidad = 1;
     }
     
     colisiona() {
@@ -41,15 +50,21 @@ class Entidad{
     suena(){
         this.sonido.currentTime = 0;
         this.sonido.play()
+        this.opacidad = 1;
     }
     dibuja(){
-        contexto.fillStyle = this.color;
+        
+        contexto.fillStyle = "rgba("+this.color[0]+","+this.color[1]+","+this.color[2]+","+this.opacidad+")";
+        contexto.strokeStyle = "rgb("+this.color[0]+","+this.color[1]+","+this.color[2]+")";;
         contexto.beginPath();
         contexto.arc(this.x,this.y,25,0,Math.PI*2,true);
         contexto.fill();
+        contexto.stroke();
     }
     mueve(){
-        
+        if(this.opacidad > 0){
+            this.opacidad -= 0.002
+        }
         this.x += Math.cos(this.direccion*this.velocidad);
         this.y += Math.sin(this.direccion*this.velocidad);
         this.colisiona();

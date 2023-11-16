@@ -10,7 +10,7 @@ window.onclick = function(){
     sonido.play()
 }
 var entidades = [];
-var numeroentidades = 20;
+var numeroentidades = 5;
 for(let i = 0;i<numeroentidades;i++){
     entidades[i] = new Entidad();
     entidades[i].x = 256;

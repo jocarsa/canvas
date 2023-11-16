@@ -10,10 +10,10 @@ window.onclick = function(){
     sonido.play()
 }
 var entidades = [];
-var numeroentidades = 20;
+var numeroentidades = 25;
 for(let i = 0;i<numeroentidades;i++){
     entidades[i] = new Entidad();
-    entidades[i].x = 256;
-    entidades[i].y = 256;
+    entidades[i].x = anchura/2;
+    entidades[i].y = altura/2;
     entidades[i].direccion = Math.random()*Math.PI*2
 }
