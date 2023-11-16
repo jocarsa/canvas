@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <title>Aprendiendo Canvas</title>
+    </head>
+    <body>
+        <script>
+            var temporizador = setTimeout("bucle()",1000)
+            
+            function bucle(){
+                console.log("hola")
+                clearTimeout(temporizador);
+                temporizador = setTimeout("bucle()",1000);
+            }
+            
+        </script>
+    </body>
+</html>

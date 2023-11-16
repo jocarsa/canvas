@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <title>Aprendiendo Canvas</title>
+    </head>
+    <body>
+        <canvas id="lienzo" width=512 height=512></canvas>
+        <script>
+            var temporizador = setTimeout("bucle()",1000);
+            const contexto = document.getElementById("lienzo").getContext("2d");
+            
+            function bucle(){
+                let x = Math.random()*512;
+                let y = Math.random()*512;
+                contexto.beginPath();
+                contexto.arc(x,y,20,0,Math.PI*2,true);
+                contexto.fill();
+                console.log("hola")
+                clearTimeout(temporizador);
+                temporizador = setTimeout("bucle()",1000);
+            }
+            
+        </script>
+    </body>
+</html>

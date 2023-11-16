@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <title>Aprendiendo Canvas</title>
+    </head>
+    <body>
+        <canvas id="lienzo" width=512 height=512></canvas>
+        <script>
+            class Entidad{
+                constructor(){
+                    this.x;
+                    this.y;
+                }
+            }
+            var temporizador = setTimeout("bucle()",1000);
+            const contexto = document.getElementById("lienzo").getContext("2d");
+            var entidad1 = new Entidad();
+            entidad1.x = Math.random()*512;
+            entidad1.y = Math.random()*512;
+            function bucle(){
+                entidad1.x++;
+                entidad1.y++;
+                contexto.beginPath();
+                contexto.arc(entidad1.x,entidad1.y,20,0,Math.PI*2,true);
+                contexto.fill();
+                console.log("hola")
+                clearTimeout(temporizador);
+                temporizador = setTimeout("bucle()",1000);
+            }
+            
+        </script>
+    </body>
+</html>
